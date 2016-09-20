@@ -1,0 +1,27 @@
+import java.util.*;
+
+public class javahelp {
+
+	public static void main(String[] args) {
+		getUserInput();
+	}
+
+	public static void getUserInput() {
+		
+		Scanner in = new Scanner(System.in);
+		String input;
+		
+		while (true) {
+			System.out.println("Enter an int");
+			input = in.next();
+			
+			try {
+				num = in.nextInt();
+				break;
+			}
+			catch (InputMismatchException e) {
+				System.out.println("That's not an int");
+			}
+		}
+	}
+}

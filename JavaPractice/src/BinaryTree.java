@@ -1,0 +1,111 @@
+public class BinaryTree<T> {
+
+	private TreeNode<T> root;
+
+	public BinaryTree() {
+		root = null;
+	}
+
+	public TreeNode<T> getRoot() {
+		return root;
+	}
+
+	public boolean isEmpty() {
+		return root == null;
+	}
+
+	public void insert(T data) {
+		root = insert(root, data);
+	}
+
+	private TreeNode<T> insert(TreeNode<T> tn, T data) {
+		if (tn == null) {
+			tn = new TreeNode<T>(data);
+		} else {
+			if (tn.getRight() == null) {
+				tn.right = insert(tn.right, data);
+			} else {
+				tn.left = insert(tn.left, data);
+			}
+		}
+		return tn;
+	}
+
+	public int getNodeCount() {
+		return getNodeCount(root);
+	}
+
+	private int getNodeCount(TreeNode<T> tn) {
+		if (tn == null) {
+			return 0;
+		} else {
+			int l = 1;
+			l += getNodeCount(tn.getLeft());
+			l += getNodeCount(tn.getRight());
+			return l;
+		}
+	}
+
+	public boolean search(T val) {
+		return search(root, val);
+	}
+
+	private boolean search(TreeNode<T> tn, T val) {
+		if (tn.getData() == val) {
+			return true;
+		}
+		if (tn.getLeft() != null) {
+			if (search(tn.getLeft(), val)) {
+				return true;
+			}
+		}
+		if (tn.getRight() != null) {
+			if (search(tn.getRight(), val)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public void preorder() {
+		preorder(root);
+	}
+
+	private void preorder(TreeNode<T> tn) {
+		// DLR
+		if (tn != null) {
+			System.out.print(tn.getData() + " ");
+			preorder(tn.getLeft());
+			preorder(tn.getRight());
+		}
+	}
+
+	public String inorder() {
+		return inorder(root);
+	}
+
+	private String inorder(TreeNode<T> tn) {
+		String inorder = "";
+		// LDR
+		if (tn != null) {
+			inorder += inorder(tn.getLeft());
+			inorder += (tn.getData() + " ");
+			inorder += inorder(tn.getRight());
+		}
+		return inorder;
+	}
+
+	public void postorder() {
+		postorder(root);
+	}
+
+	private void postorder(TreeNode<T> tn) {
+		// LRD
+		if (tn != null) {
+			postorder(tn.getLeft());
+			postorder(tn.getRight());
+			System.out.print(tn.getData() + " ");
+		}
+	}
+
+}

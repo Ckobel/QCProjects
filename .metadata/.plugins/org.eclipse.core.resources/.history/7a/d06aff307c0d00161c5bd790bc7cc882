@@ -1,0 +1,32 @@
+package WebScraping;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+public class main {
+
+	public static void main(String[] args) throws IOException{
+		
+	BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\ckobel\\Desktop\\url.txt"));
+	FileWriter fwriter = new FileWriter("C:\\Users\\ckobel\\Desktop\\DownloadURLs.html");
+	BufferedWriter writer = new BufferedWriter(fwriter);
+	    String line = br.readLine();
+
+	    while (line != null) {
+	    	String link = "<a href=" + "\"" + "https://dev.ssllabs.com/ssltest/analyze.html?d" + line + "&hideResults=on" + "\"> " + line + " </a><br>";
+	    	//run test
+	    	//String link = "<a href=" + "\"" + "https://dev.ssllabs.com/ssltest/analyze.html?viaform=on&d=" + line + "+&hideResults=on" + "\"> " + line + " </a><br>";
+	        writer.write(link);
+	        writer.newLine();
+	        line = br.readLine();
+	    }
+	    writer.close();
+	   
+	
+	}
+}
+

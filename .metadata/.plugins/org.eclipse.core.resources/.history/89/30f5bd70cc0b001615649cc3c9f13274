@@ -1,0 +1,12 @@
+import java.io.FileNotFoundException;
+
+public class main {
+
+	public static void main(String[] args) throws FileNotFoundException{
+		Image img = new Image(args[0]);
+		KCurvature kcurve = new KCurvature(args[0],args[1]);
+		kcurve.loadData(args[0]);
+	}
+}
+
+

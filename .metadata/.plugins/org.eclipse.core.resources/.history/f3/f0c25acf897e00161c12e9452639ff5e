@@ -1,0 +1,16 @@
+
+public class Driver {
+
+	public static void main(String[] args) {
+		
+		BinaryTree<Integer> bt = new BinaryTree<>();
+		
+		for(int i = 0; i < 8; i++){
+			bt.insert((int)Math.random() * 100 + 1);
+		}
+		
+		BTreePrinter.printNode(bt.getRoot());
+		
+	}
+
+}

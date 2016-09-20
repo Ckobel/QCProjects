@@ -1,0 +1,85 @@
+import java.io.*;
+import java.util.*;
+
+public class ReverseString {
+
+	public static void main(String[] args) {
+		
+		String input = args[0];
+		
+		method1(input);
+		method2(input);
+			// method3(input);
+			// method4(input);
+			// method5(input);
+		
+
+	}
+	
+	//reverse char array
+	public static void method1(String input) {
+		long startTime = System.nanoTime();
+				
+		char arr[] = input.toCharArray();
+		String output = "";
+		
+		for (int i = arr.length - 1; i >= 0; i--) {
+			output += arr[i];
+		}
+		
+		System.out.println("input: " + input);
+		System.out.println("output: " + output);
+		
+		long totalTime = System.nanoTime() - startTime;
+		
+		System.out.println("Char Array method runtime: " + totalTime + " nanoseconds");
+		System.out.println();
+	}
+	//StringBuilder reverse
+	public static void method2(String input) {
+		long startTime = System.nanoTime();
+		
+		String output = "";
+		StringBuilder sb = new StringBuilder();
+		sb.append(input);
+		sb = sb.reverse();
+		
+		
+		for(int i = 0; i < sb.length(); i++){
+			output += sb.charAt(i);
+		}
+		
+		System.out.println("input: " + input);
+		System.out.println("output: " + output);
+		
+		long totalTime = System.nanoTime() - startTime;
+		
+		System.out.println("StringBuilder method runtime: " + totalTime + " nanoseconds");
+		System.out.println();
+		
+	}
+
+	public static void method3(String input) {
+		long startTime = System.nanoTime();
+		System.out.println("input: " + input);
+
+		long totalTime = System.nanoTime() - startTime;
+		System.out.println("Char Array method runtime: " + totalTime + " nanoseconds");
+	}
+
+	public static void method4(String input) {
+		long startTime = System.nanoTime();
+		System.out.println("input: " + input);
+
+		long totalTime = System.nanoTime() - startTime;
+		System.out.println("Char Array method runtime: " + totalTime + " nanoseconds");
+	}
+
+	public static void method5(String input) {
+		long startTime = System.nanoTime();
+		System.out.println("input: " + input);
+
+		long totalTime = System.nanoTime() - startTime;
+		System.out.println("Char Array method runtime: " + totalTime + " nanoseconds");
+	}
+}

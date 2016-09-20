@@ -1,0 +1,21 @@
+
+public class BinaryTree<T> {
+
+	private TreeNode<T> root;
+
+	public BinaryTree() {
+		root = null;
+	}
+
+	public boolean isEmpty() {
+		return root == null;
+	}
+
+	public void insert(T data) {
+		root = insert(root, data);
+	}
+
+	private void insert(TreeNode<T> tn, T data) {
+
+	}
+}

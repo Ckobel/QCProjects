@@ -1,0 +1,89 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class KCurvature{
+	int K;
+	int numPts;
+	boundaryPt[] boundaryPtAry;
+	int beginIndex;
+	int Q;
+	int P;
+	int R;
+	
+	KCurvature(String inputFile, String k) throws FileNotFoundException{
+		K = Integer.parseInt(k);
+		beginIndex = 0;
+		Q = 0;
+		P = K;
+		R = 2*K;
+		
+		Scanner inFile = new Scanner(new FileReader(inputFile)); 
+		for(int i = 0; i < 6; i++){
+			numPts = inFile.nextInt();
+		}		
+			boundaryPtAry = new boundaryPt[numPts];
+			loadData(inputFile);
+			
+			for(int i = 0; i < numPts; i++){
+				P = K;
+				R = 2*K;
+				boundaryPtAry[i].curvature = computeCurvature(P,Q,R);
+				P++;
+				Q++;
+				R++;
+				
+				
+			}
+			inFile.close();
+	}
+	
+	void loadData(String inputFile) throws FileNotFoundException{
+		Scanner inFile = new Scanner(new FileReader(inputFile)); 
+	
+		    //go past header, label, and numPts
+			for(int i = 0; i < 6; i++){
+				inFile.nextInt();
+			}
+			//actual data load
+			for(int i = 0; i < numPts; i++){       // x                // y
+				boundaryPtAry[i] = new boundaryPt(inFile.nextInt(),inFile.nextInt());
+			}
+		
+		inFile.close();
+	}
+	
+	int computeLocalMaxima(int index){
+		for(int i = -2; i < 3; i++){
+			if(boundaryPtAry[index].curvature < boundaryPtAry[index + i].curvature){
+				return 0;
+			}
+		}
+		return 1;
+	}
+	
+	int isCorner(int index){
+		if(boundaryPtAry[index].localMax == 1){
+			if(boundaryPtAry[index-1].localMax == boundaryPtAry[index+1].localMax && boundaryPtAry[index+1].localMax == 1){
+				if(boundaryPtAry[index-2].localMax == boundaryPtAry[index+2].localMax && boundaryPtAry[index+2].localMax == 0){
+					return 8;
+				}
+			}
+		}
+		return 1; 
+		}
+	
+	int computeCurvature(int p, int q, int r){
+		double r1 = boundaryPtAry[r].x;
+		double r2 = boundaryPtAry[r].y;
+		
+		double c1 = boundaryPtAry[q].x;
+		double c2 = boundaryPtAry[q].y;
+		
+		double r3 = boundaryPtAry[p].x;
+		double c3 = boundaryPtAry[p].y;
+		return (int) (((r1 - r2)/((c1 - c2)+.00001)) - ((r2 - r3)/((c2 - c3)+.00001)) +  .5);
+	}
+	}
+
+

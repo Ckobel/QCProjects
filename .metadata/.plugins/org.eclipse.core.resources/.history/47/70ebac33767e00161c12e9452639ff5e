@@ -1,0 +1,12 @@
+
+public class Driver {
+
+	public static void main(String[] args) {
+		CircularlyLinkedList<Integer> cll = new CircularlyLinkedList<>();
+		
+		for(int i = 0; i < 20; i++){
+			cll.add(i);
+		}
+	}
+
+}

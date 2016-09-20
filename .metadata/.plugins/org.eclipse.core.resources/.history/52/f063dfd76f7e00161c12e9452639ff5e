@@ -1,0 +1,18 @@
+public class TreeNode<T> {
+
+	TreeNode<T> left, right;
+	T data;
+
+	public TreeNode(){
+		left = null;
+		right = null;
+	  //data = null;
+	}
+	
+	public TreeNode(T data){
+		left = null;
+		right = null;
+		this.data = data;
+	}
+	
+}

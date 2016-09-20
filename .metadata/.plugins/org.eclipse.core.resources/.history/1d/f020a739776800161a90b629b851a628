@@ -1,0 +1,41 @@
+package hackerrank;
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.util.Scanner;
+
+public class toymaximization {
+
+	public static void main(String[] args) {
+		Scanner stdin = new Scanner(System.in);
+		int n = stdin.nextInt(), k = stdin.nextInt();
+		int prices[] = new int[n];
+		int[] toys = new int[n];
+		for (int i = 0; i < n; i++)
+			prices[i] = stdin.nextInt();
+
+		Arrays.sort(prices);
+		int answer = 0;
+		// Compute the final answer from n,k,prices
+		System.out.println(answer);
+		
+		int toy = 0;
+		while(k >= 0 && k > prices[0]){
+			for(int i = n-1; i >=0; i--){
+				if(prices[i] <= k){
+					toys[toy++] = prices[i];
+					k -= prices[i];
+					prices[i] = 0;
+				}
+			}
+		}
+		
+		for(int i = 0; i < toy; i++){
+			System.out.print(toys[i] + " ");
+		}
+		
+	}
+
+}

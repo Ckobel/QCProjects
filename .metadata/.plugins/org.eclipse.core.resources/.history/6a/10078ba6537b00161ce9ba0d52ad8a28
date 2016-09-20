@@ -1,0 +1,20 @@
+
+public class Driver {
+
+	public static void main(String[] args) {
+		LinkedList<Integer> ll = new LinkedList<Integer>();
+		ll.printList();
+
+		ll.append(20);
+		ll.append(50);
+		ll.append(29120);
+		ll.append(20202);
+		ll.printList();
+		
+		ll.prepend(1999);
+		ll.printList();
+
+	}
+	
+	
+}

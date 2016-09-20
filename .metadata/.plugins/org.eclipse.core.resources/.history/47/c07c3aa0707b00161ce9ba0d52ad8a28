@@ -1,0 +1,17 @@
+public class Hashtable<K, V> {
+
+	private class Node<V> {
+		V item;
+		Node<V> next;
+
+		public Node(V v) {
+			item = v;
+		}
+	}
+	
+	private int ARRAY_SIZE;
+	
+	private K keys = new K[ARRAY_SIZE];
+	private Node<V> values = new Node<V>[ARRAY_SIZE];
+
+}

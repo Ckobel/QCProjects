@@ -1,0 +1,14 @@
+public class Student {
+	private int studentID;
+	private String studentName;
+	
+	public Student(int studentID, String studentName){
+		this.studentID = studentID;
+		this.studentName = studentName;
+	}
+	
+	public getID(){
+		return this.studentID;
+	}
+
+}

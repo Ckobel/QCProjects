@@ -1,0 +1,92 @@
+public class LinkedList<T> {
+
+	private Node<T> head;
+	private int len;
+
+	public LinkedList() {
+		len = 0;
+	}
+
+	public void append(T data) {
+		Node<T> current = head;
+
+		// walk to end of list
+		while (current.getNext() != null) {
+			current = current.getNext();
+		}
+		// append to end of list
+		current.setNext(new Node<T>(data));
+		len += 1;
+	}
+
+	public void addFirst(T data) {
+		head = new Node<T>(data, head);
+	}
+	
+	public void delete(T data){
+		Node<T> current = find(data);
+		
+	}
+	
+	
+
+	public int getLength() {
+		return len;
+	}
+
+	public Node<T> find(T data) {
+		Node<T> current = head;
+
+		// walk list looking for matching data, else return null Node
+		while (current != null) {
+			if (current.data == data) {
+				return current;
+			}
+			current = current.getNext();
+		}
+		return null;
+	}
+
+	public void printList() {
+
+		Node<T> current = head;
+		while (current != null) {
+			System.out.print(current.getData() + " ");
+			current = current.getNext();
+		}
+		System.out.println();
+	}
+
+	public class Node<T> {
+		private T data;
+		private Node<T> next;
+
+		public Node(T data) {
+			this.data = data;
+			next = null;
+		}
+
+		public Node(T data, Node<T> next) {
+			this.data = data;
+			this.next = next;
+		}
+
+		public T getData() {
+			return data;
+		}
+
+		public void setData(T data) {
+			this.data = data;
+		}
+
+		public Node<T> getNext() {
+			return next;
+		}
+
+		public void setNext(Node<T> next) {
+			this.next = next;
+		}
+
+	}
+
+}

@@ -1,0 +1,22 @@
+
+public class Driver {
+
+	public static void main(String[] args) {
+		BinaryTree<Integer> bt = new BinaryTree<>();
+		for (int i = 0; i < 20; i++) {
+			bt.insert(i);
+		}
+		System.out.println("PREORDER");
+		bt.preorder();
+		System.out.println();
+		
+		System.out.println("POSTORDER");
+		bt.postorder();
+		System.out.println();
+		
+		System.out.println("INORDER");
+		bt.inorder();
+		System.out.println();
+	}
+
+}

@@ -1,0 +1,25 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Hashtable;
+
+public class myHT {
+
+	public static void main(String[] args) throws IOException{
+		Hashtable<String, String> ht = new Hashtable<>();
+		
+		
+			BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\ckobel\\desktop\\text.txt"));
+			
+			String line;
+			
+			
+			while((line = br.readLine()) != null){
+				ht.put(line,line);
+			}
+			
+			System.out.println(ht.keySet());
+	}
+	
+}

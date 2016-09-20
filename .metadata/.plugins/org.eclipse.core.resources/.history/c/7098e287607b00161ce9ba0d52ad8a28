@@ -1,0 +1,28 @@
+
+public class Driver {
+
+	public static void main(String[] args) {
+		LinkedList<Integer> ll = new LinkedList<Integer>();
+		
+		ll.printList();
+
+		for(int i = 0; i < 20; i++){
+			ll.addFirst(i+i);
+			ll.addLast(i*i);
+		}
+		
+		ll.printList();
+		System.out.println(ll.getLength());
+
+		
+		LinkedList<String> sll = new LinkedList<String>();
+		sll.addFirst("a");
+		sll.addFirst("asdasd");
+		sll.addFirst("asdjaksjdalsd");
+		
+		sll.addLast("bbb");
+		sll.printList();
+	}
+	
+	
+}

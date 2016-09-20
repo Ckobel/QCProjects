@@ -1,0 +1,11 @@
+
+public class Driver {
+
+	public static void main(String[] args) {
+		CircularlyLinkedList<Integer> cll = new CircularlyLinkedList<>();
+		
+		
+		System.out.println(cll.size());
+	}
+
+}

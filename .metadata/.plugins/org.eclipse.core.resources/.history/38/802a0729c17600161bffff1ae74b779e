@@ -1,0 +1,23 @@
+import java.util.*;
+
+public class javahelp {
+
+	public static void main(String[] args) {
+	
+	}
+	
+	public static void getUserInput(){
+		Scanner in = new Scanner(System.in);
+		int num;
+		while(true){
+			System.out.println("Enter an int");
+			
+			try{
+				num = in.nextInt();
+			}
+			catch(InputMismatchException e){
+				
+			}
+		}
+	}
+}

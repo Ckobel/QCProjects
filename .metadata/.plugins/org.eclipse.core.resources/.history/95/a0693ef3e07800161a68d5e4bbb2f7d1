@@ -1,0 +1,16 @@
+package myCAPTCHA;
+
+public class Captcha {
+	private String captcha;
+	private int len;
+	
+	public Captcha(){
+		captcha = "";
+		len = 8;
+	}
+	
+	public String generateCaptchaString(){
+		
+	}
+	
+}

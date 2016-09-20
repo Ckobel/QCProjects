@@ -1,0 +1,73 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class KCurvature{
+	int K;
+	int numPts;
+	boundaryPt[] boundaryPtAry;
+	int beginIndex;
+	int Q;
+	int P;
+	int R;
+	
+	KCurvature(String inputFile, String k) throws FileNotFoundException{
+		K = Integer.parseInt(k);
+		beginIndex = 0;
+		Q = 0;
+		P = K;
+		R = 2*K;
+		
+		Scanner inFile = new Scanner(new FileReader(inputFile)); 
+		for(int i = 0; i < 6; i++){
+			numPts = inFile.nextInt();
+		}		
+		System.out.println(numPts);
+			boundaryPtAry = new boundaryPt[numPts];
+			inFile.close();
+	}
+	
+	void loadData(String inputFile) throws FileNotFoundException{
+		Scanner inFile = new Scanner(new FileReader(inputFile)); 
+	
+		    //go past header, label, and numPts
+			for(int i = 0; i < 6; i++){
+				inFile.nextInt();
+			}
+			//actual data load
+			for(int i = 0; i < numPts; i++){       // x                // y
+				boundaryPtAry[i] = new boundaryPt(inFile.nextInt(),inFile.nextInt());
+			}
+		
+		inFile.close();
+	}
+	
+	void computeLocalMaxima(int index){
+		//assume point at index i is a local max
+		boundaryPtAry[index].localMax = 1;
+		for(int i = -2; i < 3; i++){
+			//if it breaks the condition of being >= all its linear neighbors, set it back to 0;
+			if(boundaryPtAry[index].curvature < boundaryPtAry[index + i].curvature){
+				boundaryPtAry[index].localMax = 0;
+			}
+		}
+	}
+	
+	int isCorner(int index){
+		if(boundaryPtAry[index].localMax == 1){
+			if(boundaryPtAry[index-1].localMax == boundaryPtAry[index+1].localMax && boundaryPtAry[index+1].localMax == 1){
+				if(boundaryPtAry[index-2].localMax == boundaryPtAry[index+2].localMax && boundaryPtAry[index+2].localMax == 0){
+					return 8;
+				}
+			}
+			else
+			{
+			return 1;
+				}
+			}
+		return -99; //shut up stupid compiler
+		}
+	
+	}
+
+

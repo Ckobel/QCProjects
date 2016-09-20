@@ -1,0 +1,14 @@
+
+public class Stack<T> {
+
+	private int size;
+	private T[] stackArray;
+	private T top;
+	
+	@SuppressWarnings("unchecked")
+	public Stack(int sz){
+		size = sz;
+		//hack to create array of generic
+		stackArray = (T[]) new Object T[size];
+	}
+}

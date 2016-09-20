@@ -1,0 +1,5 @@
+
+public class OrderedLinkedList<T> extends LinkedList<T> {
+
+	
+}

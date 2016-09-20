@@ -1,0 +1,11 @@
+public class Hashtable<K,V> {
+
+	private class Node<V>{
+		V item;
+		Node<V> next;
+		public Node (V v){
+			item = v;
+		}
+	}
+	
+}

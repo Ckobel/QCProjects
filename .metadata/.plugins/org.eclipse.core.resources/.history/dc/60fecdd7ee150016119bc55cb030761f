@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+public class ReverseString {
+
+	public static void main(String[] args){
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String input;
+		try {
+			input = br.readLine();
+			method1(input);
+			//method2(input);
+			//method3(input);
+			//method4(input);
+			//method5(input);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void method1(String input){
+		long startTime = System.currentTimeMillis();
+		System.out.println("input: " + input);
+		
+		
+		
+		
+		
+		long endTime   = System.currentTimeMillis();
+		long totalTime = endTime - startTime;
+		System.out.println("Char Array method runtime: " + totalTime);
+	}
+}

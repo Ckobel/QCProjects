@@ -1,0 +1,8 @@
+
+public class OrderedLinkedList<T> extends LinkedList<T> {
+
+	public void addFirst(){
+		throw new UnsupportedOperationException("addFirst is not implemented for OrderedLinkedList<T> as it contradicts the logic of an ordered list");
+	}
+	
+}

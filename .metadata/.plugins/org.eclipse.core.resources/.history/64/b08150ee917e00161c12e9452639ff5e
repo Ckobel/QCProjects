@@ -1,0 +1,124 @@
+package myCAPTCHA;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+
+import javax.swing.*;
+
+public class CGUI {
+
+	private JFrame myFrame;
+	private JPanel top, bottom;
+	private Captcha capobj;
+	private String captcha;
+	private JTextField jtf;
+	private JButton confirm;
+
+	public CGUI(Captcha captcha) {
+		capobj = captcha;
+		myFrame = new JFrame();
+		this.captcha = captcha.generateCaptchaString();
+
+		top = new JPanel();
+		bottom = new JPanel();
+
+		myFrame.setLayout(new BorderLayout());
+		myFrame.add(top, BorderLayout.NORTH);
+		myFrame.add(bottom, BorderLayout.SOUTH);
+		transform();
+
+		jtf = new JTextField();
+		jtf.setPreferredSize(new Dimension(100, 25));
+		bottom.add(jtf);
+
+		confirm = new JButton("Validate");
+		confirm.addActionListener(new ButtonHandler());
+		bottom.add(confirm);
+
+		myFrame.pack();
+		myFrame.setLocationRelativeTo(null);
+		myFrame.setVisible(true);
+		myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+
+	public void transform() {
+		String current = "";
+		JLabel l;
+		for (int i = 0; i < captcha.length(); i++) {
+			current = String.valueOf(captcha.charAt(i));
+			l = new JLabel(current);
+			l.setForeground(getRandomColor());
+			l.setFont(new Font(getRandomFont(), Font.BOLD, 50));
+			top.add(l);
+		}
+
+	}
+
+	public void validCaptcha() {
+		myFrame.setVisible(false);
+		myFrame.removeAll();
+
+		JLabel success = new JLabel("SUCCESS");
+		success.setFont(new Font("Arial", Font.BOLD, 100));
+
+		JPanel successpane = new JPanel();
+		successpane.add(success);
+		successpane.setVisible(true);
+
+		myFrame.add(successpane);
+		myFrame.setLayout(new FlowLayout());
+
+		myFrame.setVisible(true);
+
+	}
+
+	public void newCaptcha() {
+		top.removeAll();
+		myFrame.add(top, BorderLayout.NORTH);
+		captcha = capobj.generateCaptchaString();
+		transform();
+		myFrame.pack();
+		myFrame.setVisible(true);
+	}
+
+	public static Color getRandomColor() {
+		int red = (int) (Math.random() * 255);
+		int green = (int) (Math.random() * 255);
+		int blue = (int) (Math.random() * 255);
+
+		return new Color(red, green, blue);
+	}
+
+	public static String getRandomFont() {
+		String fonts[] = { "Arial", "Bodoni MT", "Calibri", "Century", "Corbel", "Forte", "Georgia", "Impact", "Mangal",
+				"Monospaced", "Nyala", "Onyx", "Ravie", "Tahoma", "Times New Roman" };
+		int rand = new Random().nextInt(fonts.length);
+		return fonts[rand];
+	}
+
+	public class ButtonHandler implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == confirm) {
+				String input = jtf.getText();
+				if (input.length() != captcha.length() && input.length() < 1) {
+					newCaptcha();
+					return;
+				}
+				for (int i = 0; i < input.length(); i++) {
+					if (captcha.charAt(i) != input.charAt(i)) {
+						newCaptcha();
+						return;
+					}
+				}
+				validCaptcha();
+			}
+
+		}
+
+	}
+
+}
