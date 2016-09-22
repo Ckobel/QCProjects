@@ -1,0 +1,8 @@
+
+public class Waxman {
+	private String waxman;
+	
+	public Waxman(){
+		System.out.println("Ready to fuck up some perfectly readable code!");
+	}
+}

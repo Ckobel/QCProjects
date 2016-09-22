@@ -1,0 +1,18 @@
+
+public class Waxman {
+	private String waxman;
+	
+	public Waxman(string wm){
+		waxman = wm;
+		System.out.println("Ready to fuck up some perfectly readable code!");
+	}
+	
+	public String waxmanize(){
+		waxman = waxman.replaceAll("\\s+", " ");
+				return waxman;
+	}
+	
+	public void print(){
+		System.out.print(waxman);
+	}
+}

@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class Waxman {
+	private String waxman;
+	private String file;
+	public Waxman(String fileName){
+		file = fileName;
+		waxman = "";
+		System.out.println("Ready to screw up some perfectly readable code!");
+	}
+	
+	public void waxmanize(){
+		Scanner in = new Scanner(file);
+		
+		String line;
+		while(in.hasNextLine()){
+			line = in.nextLine();
+			line = line.replaceAll(" +", " ");
+			waxman += line;
+		}
+		in.close();
+		
+	}
+	
+	public void print(){
+		System.out.print(waxman);
+	}
+	
+	public static void main(String[] args){
+		Waxman wax = new Waxman(args[0]);
+		wax.waxmanize();
+		wax.print();
+	}
+}

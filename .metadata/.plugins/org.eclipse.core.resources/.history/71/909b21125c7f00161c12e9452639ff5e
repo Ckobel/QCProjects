@@ -1,0 +1,17 @@
+
+public class A {
+
+	public void minMax() {
+		int max = min = num.nextInt();
+		while (num.hasNextInt()) {
+			int newNum = num.nextInt();
+
+			if (newNum > max)
+				max = newNum;
+
+			if (newNum < min)
+				min = newNum;
+		}
+	}
+
+}

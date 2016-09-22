@@ -1,0 +1,7 @@
+
+public class Primes {
+
+	public void first100Primes(int n){
+		
+	}
+}

@@ -1,0 +1,11 @@
+import java.util.Scanner;
+
+public class RemoveSpecificCharacter {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter your original string");
+		String original = scanner.nextLine();
+	}
+
+}

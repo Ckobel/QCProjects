@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class RemoveSpecificCharacter {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter your original string");
+		String original = scanner.nextLine();
+		
+		System.out.println("Enter characters to be removed");
+		String unwanted = scanner.nextLine();
+		
+		System.out.println("Removing unwanted characters");
+		
+		removeUnwantedChars(original,unwanted);
+	}
+	
+	public static String removeUnwantedChars(String original, String unwanted){
+		
+	}
+
+}

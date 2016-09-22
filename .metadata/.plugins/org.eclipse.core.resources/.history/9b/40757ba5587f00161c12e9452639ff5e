@@ -1,0 +1,14 @@
+
+public class A {
+
+	public A(){
+		System.out.println("DEFAULT CSTR");
+		A a[] = new A[5];
+
+	}
+	
+	public static void main(String[] args){
+		A a[] = new A[5];
+	}
+	
+}

@@ -1,0 +1,29 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+public class PQsort {
+
+	private int size;
+	private int[] pqary;
+	private int iterator;
+	private BufferedWriter bw;
+	private BufferedReader br;
+	
+	public PQsort(){
+		size = 1;
+		iterator = 1;
+		pqary = new int[size];
+	}
+	
+	public PQsort(String filename) throws FileNotFoundException{
+		size = 10;
+		iterator = 1;
+		pqary = new int[size];
+		bw = new BufferedWriter(new FileWriter(filename));
+	}
+	
+	public void build
+}

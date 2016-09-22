@@ -1,0 +1,35 @@
+import java.util.Scanner;
+
+public class RemoveSpecificCharacter {
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter your original string");
+		String original = scanner.nextLine();
+
+		System.out.println("Enter characters to be removed");
+		String unwanted = scanner.nextLine();
+
+		System.out.println("Removing unwanted characters");
+
+		removeUnwantedChars(original, unwanted);
+	}
+
+	public static String removeUnwantedChars(String original, String unwanted) {
+		char[] originalArr = original.toCharArray();
+		char[] unwantedArr = unwanted.toCharArray();
+
+		boolean remove[] = new boolean[originalArr.length];
+		for (int i = 0; i < originalArr.length; i++) {
+			remove[unwantedArr[i]] = true;
+		}
+		
+		char[] cleanstr = new char[originalArr.length];
+		for(int i = 0; i < originalArr.length; i++){
+			if(!]){
+				
+			}
+		}
+	}
+
+}

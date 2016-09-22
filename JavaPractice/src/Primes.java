@@ -1,0 +1,28 @@
+
+public class Primes {
+
+	public static void first100Primes() {
+		long startTime = System.currentTimeMillis();
+
+		for (int i = 1; i * i < 100; i++) {
+
+			boolean flag = true;
+			for (int j = 2; j < (int) (Math.sqrt(i) + .5); j++) {
+				if (i % j == 0) {
+					flag = false;
+				}
+
+			}
+			if (flag) {
+				System.out.print(i + " ");
+			}
+		}
+
+		long estimatedTime = System.currentTimeMillis() - startTime;
+		System.out.println(estimatedTime);
+	}
+
+	public static void main(String[] args) {
+		first100Primes();
+	}
+}

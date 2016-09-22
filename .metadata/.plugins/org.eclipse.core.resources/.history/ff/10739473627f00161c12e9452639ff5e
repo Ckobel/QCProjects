@@ -1,0 +1,15 @@
+
+public interface LinkedList<T>{
+
+	public void addFirst(T data);
+	public void addLast(T data);
+	public int getLength();
+	public Node<T> find(T data);
+	public void printList();
+	public abstract class Node<T>{
+		public abstract T getData();
+		public abstract void setData(T data);
+		public abstract Node<T> getNext();
+		public abstract void setNext(Node<T> next);
+	}
+}

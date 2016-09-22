@@ -1,0 +1,6 @@
+
+public interface LinkedList<T> {
+
+	public void addFirst(T data);
+	public void addLast(T data);
+}

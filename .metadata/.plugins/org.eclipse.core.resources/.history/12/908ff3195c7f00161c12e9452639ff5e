@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class A {
+
+	public static void minMax() {
+		Scanner num = new Scanner(System.in;
+		int max,min;
+		int max = min = num.nextInt();
+		while (num.hasNextInt()) {
+			int newNum = num.nextInt();
+
+			if (newNum > max)
+				max = newNum;
+
+			if (newNum < min)
+				min = newNum;
+		}
+	}
+	
+	public static void main(String[] args){
+		minMax();
+	}
+
+}

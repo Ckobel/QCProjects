@@ -1,0 +1,39 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class Waxman {
+	private String waxman;
+	private String file;
+	
+	public Waxman(String fileName){
+		file = fileName;
+		waxman = "";
+		System.out.println("Ready to screw up some perfectly readable code!");
+	}
+	
+	public void waxmanize() throws FileNotFoundException{
+		Scanner in = new Scanner(new FileReader(file));
+		
+		String line;
+		while(in.hasNextLine()){
+			line = in.nextLine();
+			line = line.replaceAll("^_+", " ");
+			System.out.println(line);
+			waxman += line;
+		}
+		in.close();
+		
+	}
+	
+	public void print(){
+		String[] lines = waxman.split("\n")
+		System.out.print(waxman);
+	}
+	
+	public static void main(String[] args) throws FileNotFoundException{
+		Waxman wax = new Waxman(args[0]);
+		wax.waxmanize();
+		wax.print();
+	}
+}

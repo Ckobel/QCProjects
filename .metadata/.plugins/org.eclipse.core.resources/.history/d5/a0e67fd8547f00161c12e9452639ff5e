@@ -1,0 +1,170 @@
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class PQsort {
+
+	private int size;
+	private int[] pqary;
+	private int iterator;
+	private FileWriter fileWriter;
+	private Scanner scanner;
+
+	public PQsort() {
+		size = 1;
+		iterator = 1;
+		pqary = new int[size];
+	}
+
+	public PQsort(String outputFile) throws IOException {
+		size = 10;
+		iterator = 1;
+		pqary = new int[size];
+		fileWriter = new FileWriter(outputFile);
+	}
+
+	public void buildHeap(String inputFile) throws FileNotFoundException {
+		scanner = new Scanner(new FileReader(inputFile));
+		while (scanner.hasNext()) {
+			insertOneDataItem(scanner.nextInt());
+		}
+		scanner.close();
+	}
+
+	public void insertOneDataItem(int data) {
+		if (!isFull()) {
+			pqary[iterator] = data;
+			bubbleUp();
+			iterator++;
+		} else {
+			grow();
+			pqary[iterator] = data;
+			bubbleUp();
+			iterator++;
+		}
+	}
+
+	public String deleteRoot() {
+		int lastIndex = iterator - 1;
+		int value = pqary[1];
+
+		swap(lastIndex, 1);
+		iterator--;
+		shrink();
+		bubbleDown();
+		pqary[0]--;
+		printTen();
+
+		return "" + value;
+	}
+
+	public void bubbleDown() {
+
+		int parentIndex = 1;
+
+		while (true) {
+
+			int leftIndex = getLeftChild(parentIndex);
+			int rightIndex = getRightChild(parentIndex);
+			int largestValue = parentIndex;
+
+			if (leftIndex < size && pqary[leftIndex] < pqary[largestValue])
+				largestValue = leftIndex;
+
+			if (rightIndex < size && pqary[rightIndex] < pqary[largestValue])
+				largestValue = rightIndex;
+
+			if (largestValue != parentIndex) {
+
+				swap(largestValue, parentIndex);
+				parentIndex = largestValue;
+
+			} else {
+
+				break;
+			}
+		}
+	}
+
+	void bubbleUp() {
+
+		int childIndex = iterator;
+		int parentIndex = getParent(childIndex);
+
+		if (childIndex == 1) {
+			return;
+		}
+
+		while (pqary[childIndex] < pqary[parentIndex]) {
+
+			swap(childIndex, parentIndex);
+			childIndex = parentIndex;
+			parentIndex = getParent(childIndex);
+			if (childIndex == 1) {
+				return;
+			}
+
+		}
+
+	}
+
+	void print() {
+
+		for (int i = 1; i < iterator; i++) {
+			System.out.print(pqary[i] + " ");
+		}
+
+		System.out.println();
+	}
+
+	public boolean isFull() {
+		return iterator == size;
+	}
+
+	public void shrink() {
+		size -= 1;
+		int[] temp = new int[size];
+		for (int i = 0; i < size; i++) {
+			temp[i] = pqary[i];
+		}
+		pqary = temp;
+	}
+
+	public void grow() {
+		size += 1;
+		int[] temp = new int[size];
+		for (int i = 0; i < size - 1; i++) {
+			temp[i] = pqary[i];
+		}
+		pqary = temp;
+	}
+
+	void swap(int child, int parent) {
+
+		int temp = pqary[child];
+		pqary[child] = pqary[parent];
+		pqary[parent] = temp;
+
+	}
+
+	void printTen() throws IOException {
+		int toIndex = iterator;
+		if (toIndex >= 11) {
+			toIndex = 11;
+		}
+		
+		for(int i = 0; i < toIndex; i++){
+			fileWriter.write(pqary[i] + " ");
+		}
+		
+		fileWriter.write('\n');
+	}
+	
+	int getParent(int child) { return child/2; }
+    int getLeftChild(int parent) { return 2 * parent; }
+    int getRightChild(int parent) { return 2 * parent + 1; }
+    int getSize() { return size; }
+
+}

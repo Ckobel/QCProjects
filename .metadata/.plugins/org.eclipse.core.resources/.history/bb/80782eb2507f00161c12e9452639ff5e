@@ -1,0 +1,32 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class PQsort {
+
+	private int size;
+	private int[] pqary;
+	private int iterator;
+	private BufferedWriter bw;
+	private BufferedReader br;
+	
+	public PQsort(){
+		size = 1;
+		iterator = 1;
+		pqary = new int[size];
+	}
+	
+	public PQsort(String outputFile) throws IOException{
+		size = 10;
+		iterator = 1;
+		pqary = new int[size];
+		bw = new BufferedWriter(new FileWriter(outputFile));
+	}
+	
+	public void buildHeap(String inputFil){
+		
+	}
+}

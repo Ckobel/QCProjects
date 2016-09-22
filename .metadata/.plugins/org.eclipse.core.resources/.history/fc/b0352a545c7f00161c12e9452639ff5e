@@ -1,0 +1,58 @@
+import java.util.Scanner;
+
+public class A {
+
+	public static void badMinMax() {
+		Scanner num = new Scanner(System.in);
+		int comparisons = 0;
+		int max,min;
+		max = min = num.nextInt();
+		while (num.hasNextInt()) {
+			int newNum = num.nextInt();
+
+			if (newNum > max){
+				max = newNum;
+				comparisons++;
+			}
+				
+
+			if (newNum < min){
+				comparisons++;
+				min = newNum;
+			}
+				
+		}
+		num.close();
+		System.out.println(comparisons);
+	}
+	
+	public static void goodMinMax() {
+		Scanner num = new Scanner(System.in);
+		int comparisons = 0;
+		int max,min;
+		max = min = num.nextInt();
+		while (num.hasNextInt()) {
+			int newNum = num.nextInt();
+
+			if (newNum > max){
+				max = newNum;
+				comparisons++;
+			}
+				
+
+			else	if (newNum < min){
+				comparisons++;
+				min = newNum;
+			}
+				
+		}
+		num.close();
+		System.out.println(comparisons);
+	}
+
+
+	public static void main(String[] args) {
+		minMax();
+	}
+
+}

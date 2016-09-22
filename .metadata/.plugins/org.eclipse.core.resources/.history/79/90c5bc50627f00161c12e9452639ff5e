@@ -1,0 +1,12 @@
+
+public interface LinkedList<T>{
+
+	public void addFirst(T data);
+	public void addLast(T data);
+	public int getLength();
+	public Node<T> find(T data);
+	public void printList();
+	public interface Node<T>{
+		
+	}
+}

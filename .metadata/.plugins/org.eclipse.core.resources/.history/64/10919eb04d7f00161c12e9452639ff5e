@@ -1,0 +1,46 @@
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+//Meant to mimic re in python
+public class RE {
+
+	private Pattern pattern;
+	private Matcher matcher;
+
+	public RE() {
+	}
+
+	public void compile(String regex) {
+		pattern = Pattern.compile(regex);
+	}
+
+	public void find(String input) {
+		matcher = pattern.matcher(input);
+		while (matcher.find()) {
+			System.out.println(matcher.group());
+		}
+	}
+
+	public void find(String regex, String input) {
+		pattern = Pattern.compile(regex);
+		matcher = pattern.matcher(input);
+		while (matcher.find()) {
+			System.out.println(matcher.group());
+		}
+	}
+
+	public void replace(String regex, String input, String replacement) {
+		pattern = Pattern.compile(regex);
+		matcher = pattern.matcher(input);
+		matcher.replaceAll(replacement);
+		System.out.println(input);
+	}
+
+	public static void main(String[] args) {
+		RE re = new RE();
+		String in = "aabaabababbzca";
+		re.replace("a+", in, "dog");
+		System.out.println(in);
+
+	}
+}
